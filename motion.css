@@ -1,0 +1,44 @@
+﻿/* Entrance effects run once; content stays visible without JavaScript. */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-arrive {
+  from { opacity: .5; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy, .page-intro > h1 { animation: hero-arrive .75s cubic-bezier(.2,.7,.2,1) both; }
+  .hero-visual { animation: hero-arrive .95s cubic-bezier(.2,.7,.2,1) both; }
+  .reveal-in { animation: reveal-up .65s cubic-bezier(.2,.7,.2,1); }
+}
+.hero h1 em, .page-intro h1 em { text-shadow: 0 8px 35px #962f3912; }
+.hero-visual > img { transition: transform .9s cubic-bezier(.2,.7,.2,1); }
+.button span, .text-link span, .app-arrow, .support-links b { display: inline-block; transition: transform .25s ease; }
+.trust-icon { transition: color .25s, background .25s, border-color .25s, transform .25s; }
+.application-grid a, .resource-grid article { transition: transform .25s, box-shadow .25s, border-color .25s; }
+.resource-symbol { transition: transform .25s, color .25s, background .25s; }
+#navigation > a:not(.button) { position: relative; }
+#navigation > a:not(.button)::after { content: ''; position: absolute; bottom: 4px; left: 0; width: 100%; height: 1px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform .25s; }
+.filters button { transition: background .2s, border-color .2s, color .2s; }
+input, select, textarea { transition: border-color .2s, box-shadow .2s, background .2s; }
+input:focus, select:focus, textarea:focus { border-color: #899b86; box-shadow: 0 3px 16px #25382e09; }
+.button:focus-visible span, .application-grid a:focus-visible .app-arrow, .support-links a:focus-visible b { transform: translate(3px, -3px); }
+@media (hover: hover) and (pointer: fine) {
+  .hero-visual:hover > img { transform: scale(1.045); }
+  .button:hover span, .text-link:hover span, .application-grid a:hover .app-arrow, .support-links a:hover b { transform: translate(3px, -3px); }
+  .trust-item:hover .trust-icon { color: #fff; background: #304437; border-color: #304437; transform: translateY(-3px); }
+  .application-grid a:hover, .resource-grid article:hover { transform: translateY(-5px); box-shadow: 0 14px 26px #25382e0c; border-color: #b9b49f; }
+  .resource-grid article:hover .resource-symbol { transform: rotate(-8deg); color: #fff; background: #304437; }
+  #navigation > a:not(.button):hover::after { transform: scaleX(1); }
+  .filters button:not(.active):hover { background: #eee9dd; border-color: #baae96; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .hero-visual:hover > img, .product:hover img, .product:hover, .button:hover,
+  .button:hover span, .text-link:hover span, .application-grid a:hover,
+  .application-grid a:hover .app-arrow, .support-links a:hover b,
+  .trust-item:hover .trust-icon, .resource-grid article:hover,
+  .resource-grid article:hover .resource-symbol, .button:focus-visible span,
+  .application-grid a:focus-visible .app-arrow, .support-links a:focus-visible b { transform: none; }
+}
